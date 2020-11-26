@@ -49,9 +49,6 @@ if not (0 <= dictor < len(available_dictors)):
     print("Wrong number")
     exit(-1)
 
-output = input('Enter output file name (default: file.wav): ') 
-output = output if output else 'file.wav'
-
 dictor = available_dictors[dictor]
 
 speech_config = SpeechConfig(subscription=key, region=region)
@@ -64,5 +61,5 @@ ssml_string = """<speak version='1.0' xml:lang='{LANG}'><voice xml:lang='{LANG}'
 result = synthesizer.speak_ssml_async(ssml_string).get()
 
 stream = AudioDataStream(result)
-stream.save_to_wav_file(output)
+stream.save_to_wav_file(".".join(filename.split('.')[:-1]) + ".wav")
 print('Done')
