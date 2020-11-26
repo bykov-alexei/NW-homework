@@ -1,0 +1,2 @@
+key = "yourkey"
+region = "yourregion"
